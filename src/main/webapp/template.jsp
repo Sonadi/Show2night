@@ -31,7 +31,7 @@
   	 <div class="container">
   	 	<div class="row">
   	 		<div class="footer-col">
-  	 			<h4>thundercoding</h4>
+  	 			<h4>Company</h4>
   	 			<ul>
   	 				<li><a href="#">About us</a></li>
   	 				<li><a href="#">Contact us</a></li>
@@ -42,19 +42,18 @@
   	 			<h4>get help</h4>
   	 			<ul>
   	 				<li><a href="#">FAQ</a></li>
-  	 				<li><a href="#">Courses</a></li>
-  	 				<li><a href="#">branches</a></li>
-  	 				<li><a href="#">Placements</a></li>
-  	 				<li><a href="#">Activities</a></li>
+  	 				<li><a href="#">Contact Support</a></li>
+  	 				<li><a href="#">Help center</a></li>
+  	 				<li><a href="#">Supported Devices</a></li>
   	 			</ul>
   	 		</div>
   	 		<div class="footer-col">
-  	 			<h4>Student Section</h4>
+  	 			<h4>Get The Apps</h4>
   	 			<ul>
-  	 				<li><a href="#">Student Grievances</a></li>
-  	 				<li><a href="#">Study Material Status</a></li>
-  	 				<li><a href="#">Placement Assistance</a></li>
-  	 				<li><a href="#">Alumni</a></li>
+  	 				<li><a href="#">iOS</a></li>
+  	 				<li><a href="#">Android</a></li>
+  	 				<li><a href="#">Roku</a></li>
+  	 				<li><a href="#">Windows</a></li>
   	 			</ul>
   	 		</div>
   	 		<div class="footer-col">
