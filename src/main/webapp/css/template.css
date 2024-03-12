@@ -133,9 +133,12 @@
 		color: #e0fbfc;
 	}
 	
+	.nav-links{
+		margin-left: 200px;
+	}
 	.nav-links ul {
 		display: flex;
-		justify-content: center;
+		margin-right: -50px;
 		align-items: center;
 		list-style-type: none;
 		gap: 50px;
@@ -183,4 +186,44 @@
 	body{
 	line-height: 1.5;
 	font-family: 'Poppins', sans-serif;
+}
+.search-container {
+    align-items: center; /* Align items to the center */
+    justify-content: end; /* Align content to the end */
+    margin: auto; /* Center-align the container */
+	
+    padding: 2px; /* Add padding */
+    border: 1px solid #ccc; /* Add border */
+    border-radius: 50px; /* Add border radius */
+    background-color: #fff; /* Set background color */
+    overflow: hidden; /* Hide overflow */
+    z-index: 999; /* Set z-index to be above other elements */
+}
+
+/* Styling for search input field */
+.search-container input[type="text"] {
+    flex-grow: 1; /* Allow input to grow within container */
+    border: none; /* Remove border */
+    outline: none; /* Remove outline */
+    padding: 5px; /* Add padding */
+    font-size: 16px; /* Set font size */
+    z-index: 999; /* Set z-index to be above other elements */
+}
+
+/* Styling for search button */
+.search-container button[type="submit"] {
+    background-color: #9eb2be; /* Set background color */
+    color: #fff; /* Set text color */
+    border: none; /* Remove border */
+    padding: 8px 18px; /* Add padding */
+    border-radius: 50px; /* Add border radius */
+    cursor: pointer; /* Add pointer cursor */
+    overflow: hidden; /* Hide overflow */
+    z-index: 999; /* Set z-index to be above other elements */
+    transition: all 0.3s ease; /* Add transition effect */
+}
+
+/* Hover effect for search button */
+.search-container button[type="submit"]:hover {
+    background-color: #35617a; /* Change background color on hover */
 }
