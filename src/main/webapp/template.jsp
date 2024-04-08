@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
   <link rel="stylesheet" href = "css/template.css">
+  <link rel="stylesheet" href = "css/Log.css">
 </head>
 <body>
  <header class="header">
@@ -26,7 +27,29 @@
     </div>
             <a href="" class="btn">Profile</a>
         </header>
-        <h1></h1>
+         <nav class="body">  
+  
+    <div id = "div"> 
+      <div class="login-container">
+        <h2 id="h2">Login</h2>
+        <form id="login-form" method="post" action="sign in.php">
+      
+            <input type="text" id="username" name="username" placeholder="Username" required>
+            <br>
+            <input type="password" id="password" name="password" placeholder="Password" required>
+            <br>
+            <label for="keep-me-logged-in" id="keep-me-logged-in">
+            <input type="checkbox"  name="keep-me-logged-in"> Keep me logged in</label>
+            <br>
+            <a><button id="button" type="submit" name="submit">Login</button></a>
+        </form>
+        <p id="h2"><a href="forgot_password.html" >Forgot your password?</a></p><br>
+        <p id="he">Don't have an account? <a href="sign up.html">Create an account</a></p>
+
+    </div>
+      
+    </div>
+  </nav>
   <footer class="footer">
   	 <div class="container">
   	 	<div class="row">

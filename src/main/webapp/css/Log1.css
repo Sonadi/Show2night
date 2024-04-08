@@ -1,0 +1,96 @@
+.body {
+    background-image: url('cover.jpg');
+    background-size: cover; 
+    background-repeat: no-repeat; 
+    background-attachment: fixed; 
+    filter: brightness(0.8);
+     padding: 100px;
+     color: #acacac;
+}
+
+
+#div{
+    width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+
+    background: transparent;
+    backdrop-filter:blur(20px);
+}
+
+.form-group {
+    margin-bottom: 15px; /* Increase spacing between form groups */
+}
+h2{
+    text-align: center;
+}
+#privacy , p{
+    font-weight: bold;
+    color: #555; /* Label text color */
+}
+
+.container input[type="text"],
+.container input[type="email"],
+.container input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 5px; /* Increase spacing between input fields */
+    border: 1px solid #ccc;
+    background-color: #f9f9f9; /* Input field background color */
+    color: #acacac;
+    border: none;
+    outline: none;
+    background: transparent;
+    border-bottom: 2px solid black;
+}
+
+
+.container button[type="submit"] {
+    background-color: #490000;
+    color: #acacac;
+    border: none;
+    padding: 15px 25px; /* Increase padding for button */
+    cursor: pointer;
+    width: 300px;
+    transition: background-color 0.3s ease; /* Add a smooth hover transition */
+    margin-left: 80px;
+    border-radius: 8px;
+}
+
+.container button[type="submit"]:hover {
+    background-color: #270101; /* Change background color on hover */
+}
+
+
+#click2{
+    background-color: #270101;
+    color: #fff;
+    border: none;
+    padding: 10px; /* Increase padding for button */
+    width: 200px;
+    transition: background-color 0.3s ease; /* Add a smooth hover transition */
+    margin-left: 130px;
+    margin-top: -30px;
+    border-radius: 8px;
+
+}
+#click2:hover {
+    background-color: #490000;
+}
+
+#privacy{
+    margin-bottom: 20px;
+    color: #acacac;
+}
+#privacyPolicy{
+    color: #acacac;
+}
+
+/* Change the placeholder text color */
+.container input[type="text"]::placeholder,
+.container input[type="email"]::placeholder,
+.container input[type="password"]::placeholder {
+    color: #acacac;
+    font-weight: bolder;
+}
+
