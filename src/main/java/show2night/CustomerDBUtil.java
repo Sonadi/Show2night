@@ -1,7 +1,9 @@
 package show2night;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
@@ -36,7 +38,7 @@ public class CustomerDBUtil {
 	
 	public static List<Customer> getCustomer(String userName) {
 		
-		ArrayList<Customer> customer = new ArrayList<>();
+		ArrayList<Customer> RegisterdCustomer = new ArrayList<>();
 		
 		try {
 			
@@ -55,15 +57,15 @@ public class CustomerDBUtil {
 				String username = rs.getString(7);
 				String password = rs.getString(8);
 				
-				Customer cus = new Customer(id,fname, lname , email,city, phone, username, password);
-				customer.add(cus);
+				Customer cus = new RegisterdCustomer(id,fname, lname , email,city, phone, username, password);
+				RegisterdCustomer.add(cus);
 			}
 			
 		} catch (Exception e) {
 			
 		}
 		
-		return customer;	
+		return RegisterdCustomer;	
 	}
 	 public static boolean insertcustomer(String fname, String lname , String email,String city, String phone, String username, String password) {
 	    	
@@ -146,4 +148,45 @@ public class CustomerDBUtil {
 	    	}	
 	    	return cus;	
 	    }
+	 public static boolean deleteCustomer(String username) {
+		 con = DBconnect.getConnection();
+	        PreparedStatement stmt = null;
+
+	        try {
+	            
+	            String sql = "DELETE FROM customer WHERE username = ?";
+	            stmt = con.prepareStatement(sql);
+
+	            
+	            stmt.setString(1, username);
+
+	          
+	            int rowsAffected = stmt.executeUpdate();
+
+	            
+	            if (rowsAffected > 0) {
+	            	String alertMessage = "Customer with username '" + username + "' deleted successfully.";
+	                System.out.println("Executing JavaScript alert: " + alertMessage);
+	                System.out.println("<script>alert('" + alertMessage + "');</script>");
+	                return true; 
+	            } else {
+	                System.out.println("No customer found with username " + username);
+	                return false; 
+	            }
+
+	        } catch (SQLException e) {
+	            System.err.println("Error deleting customer: " + e.getMessage());
+	            return false; 
+	        } finally {
+	            
+	            if (stmt != null) {
+	                try {
+	                    stmt.close();
+	                } catch (SQLException e) {
+	                    System.err.println("Error closing statement: " + e.getMessage());
+	                }
+	            }
+	            
+	        }
+}
 }

@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="show2night:war exploded">
+    <output-path>$PROJECT_DIR$/classes/artifacts/show2night_war_exploded</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="show2night/web/Web" />
+    </root>
+  </artifact>
+</component>

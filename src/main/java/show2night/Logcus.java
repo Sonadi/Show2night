@@ -1,48 +1,46 @@
 package show2night;
 
+import java.io.IOException;
+
+import java.util.List;
+
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.util.List;
+import jakarta.servlet.http.HttpSession;
 
-
-/**
- * Servlet implementation class Logcus
- */
 public class Logcus extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-       
+
     /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public Logcus() {
-        super();
-        // TODO Auto-generated constructor stub
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        HttpSession session = request.getSession();
+        String userName = request.getParameter("username");
+        String password = request.getParameter("password");
+
+        session.setAttribute("username", userName);
+
+        boolean isTrue = CustomerDBUtil.validate(userName, password);
+
+        if (isTrue) {
+           
+            List<Customer> cusDetails = CustomerDBUtil.getCustomer(userName);
+
+            request.setAttribute("cusDetails", cusDetails);
+            request.getRequestDispatcher("home.jsp").forward(request, response);
+
+            
+          
+        } else {
+           
+            response.sendRedirect("log.jsp?error=invalid");
+           
+        }
     }
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		 String userName = request.getParameter("username");
-	        String password = request.getParameter("password");
-	        
-	        boolean isTrue = CustomerDBUtil.validate(userName, password);
-	       
-	        
-	        if (isTrue) {
-	            List<Customer> cusDetails = CustomerDBUtil.getCustomer(userName);
-	            
-	                request.setAttribute("cusDetails", cusDetails);
-	                jakarta.servlet.RequestDispatcher dis = request.getRequestDispatcher("useraccount.jsp");
-	                dis.forward(request, response);
-	            
-	        } else {
-	            
-	            response.sendRedirect("log.jsp");
-	        }
-	}
-
+ 
 }
