@@ -9,7 +9,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
   <link rel="stylesheet" href = "css/template.css">
-  <link rel="stylesheet" href = "css/Log.css">
+  <link rel="stylesheet" href = "css/acc1.css">
 </head>
 <body>
  <header class="header">
@@ -42,7 +42,7 @@
 	%>
 	
 	
-	<form action="updatecus" method="post">
+	<form action="updatecus" method="post" id = "ks">
 	<table>
 		<tr>
 			<td>Customer ID</td>
@@ -71,7 +71,10 @@
 			
 	</table>
 	<br>
-	<input type="submit" name="submit" value="Update My Data">
+	
+	<div class="button-container">
+    <input type="submit" name="submit" value="Update My Data">
+</div>
 	</form>
   <footer class="footer">
   	 <div class="containe">

@@ -189,4 +189,35 @@ public class CustomerDBUtil {
 	            
 	        }
 }
+	 public static List<Customer> getCustomeraccounts() {
+			
+			ArrayList<Customer> RegisterdCustomer = new ArrayList<>();
+			
+			try {
+				
+				con = DBconnect.getConnection();
+				stmt = con.createStatement();
+				String sql = "select * from customer";
+				rs = stmt.executeQuery(sql);
+				
+				while (rs.next()) {
+					int id = rs.getInt(1);
+					String fname = rs.getString(2);
+					String lname = rs.getString(3);
+					String email = rs.getString(4);
+					String city = rs.getString(5);
+					String phone = rs.getString(6);
+					String username = rs.getString(7);
+					String password = rs.getString(8);
+					
+					Customer cus = new RegisterdCustomer(id,fname, lname , email,city, phone, username, password);
+					RegisterdCustomer.add(cus);
+				}
+				
+			} catch (Exception e) {
+				
+			}
+			
+			return RegisterdCustomer;	
+		}
 }
