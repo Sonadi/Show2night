@@ -18,7 +18,7 @@
                 <ul>
                     <li><a href="home">HOME</a></li>
                     <li><a href="#">GENRE</a></li>
-                    <li><a href="MovieListServlet">MOVIES</a></li>
+                    <li><a href="#">MOVIES</a></li>
                     <li><a href="#">TV SHOWS</a></li>
                 </ul>
             </div>

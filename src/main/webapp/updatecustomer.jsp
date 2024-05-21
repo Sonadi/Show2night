@@ -37,12 +37,13 @@
 		String lname = request.getParameter("lname");
 		String email = request.getParameter("email");
 		String phone = request.getParameter("phone");
+		String city = request.getParameter("city");
 		String userName = request.getParameter("username");
 		
 	%>
 	
 	
-	<form action="updatecus" method="post" id = "ks">
+	<form action="up" method="post" id = "ks">
 	<table>
 		<tr>
 			<td>Customer ID</td>
@@ -63,6 +64,10 @@
 	<tr>
 		<td>Phone number</td>
 		<td><input type="text" name="phone" value="<%= phone %>"></td>
+	</tr>
+	<tr>
+		<td>City</td>
+		<td><input type="text" name="city" value="<%= city %>"></td>
 	</tr>
 	<tr>
 		<td>User name</td>

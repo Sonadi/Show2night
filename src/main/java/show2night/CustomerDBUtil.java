@@ -18,7 +18,7 @@ public class CustomerDBUtil {
 	public static boolean validate(String username, String password) {
 		
 		try {
-			con = DBconnect.getConnection();
+			con = db.getConnection();
 			stmt = con.createStatement();
 			String sql = "select * from customer where username='"+username+"' and password='"+password+"'";
 			rs = stmt.executeQuery(sql);
@@ -42,7 +42,7 @@ public class CustomerDBUtil {
 		
 		try {
 			
-			con = DBconnect.getConnection();
+			con = db.getConnection();
 			stmt = con.createStatement();
 			String sql = "select * from customer where username='"+userName+"'";
 			rs = stmt.executeQuery(sql);
@@ -72,7 +72,7 @@ public class CustomerDBUtil {
 	    	boolean isSuccess = false;
 	    	
 	    	try {
-	    		con = DBconnect.getConnection();
+	    		con = db.getConnection();
 	    		stmt = con.createStatement();
 	    	    String sql = "insert into customer values (0,'"+fname+"','"+lname+"','"+email+"','"+city+"','"+phone+"','"+username+"','"+password+"')";
 	    		int rs = stmt.executeUpdate(sql);
@@ -91,30 +91,43 @@ public class CustomerDBUtil {
 	    	return isSuccess;
 	    }
 	 
-	 public static boolean updatecustomer(String id, String name, String email, String phone, String username, String password) {
-	    	
-	    	try {
-	    		
-	    		con = DBconnect.getConnection();
-	    		stmt = con.createStatement();
-	    		String sql = "update customer set name='"+name+"',email='"+email+"',phone='"+phone+"',username='"+username+"',password='"+password+"'"
-	    				+ "where id='"+id+"'";
-	    		int rs = stmt.executeUpdate(sql);
-	    		
-	    		if(rs > 0) {
-	    			isSuccess = true;
-	    		}
-	    		else {
-	    			isSuccess = false;
-	    		}
-	    		
-	    	}
-	    	catch(Exception e) {
-	    		e.printStackTrace();
-	    	}
-	    	
-	    	return isSuccess;
-	    }
+	
+
+	 
+	     
+
+	     public static boolean updateCustomer(String id, String fname, String lname, String email, String phone, String city, String username) {
+	         try {
+	             con = db.getConnection();
+	             String sql = "UPDATE customer SET fname=?, lname=?, email=?, phone=?, city=?, username=? WHERE id=?";
+	             PreparedStatement pstmt = con.prepareStatement(sql);
+	             pstmt.setString(1, fname);
+	             pstmt.setString(2, lname);
+	             pstmt.setString(3, email);
+	             pstmt.setString(4, phone);
+	             pstmt.setString(5, city);
+	             pstmt.setString(6, username);
+	             pstmt.setString(7, id);
+	             int rowsUpdated = pstmt.executeUpdate();
+	             return rowsUpdated > 0;
+	         } catch (SQLException e) {
+	             e.printStackTrace();
+	             return false;
+	         } finally {
+	             try {
+	                 if (con != null) {
+	                     con.close();
+	                 }
+	             } catch (SQLException e) {
+	                 e.printStackTrace();
+	             }
+	         }
+	     }
+
+	   
+	   
+	 
+
 	 public static List<Customer> getCustomerDetails(String Id) {
 	    	
 	    	int convertedID = Integer.parseInt(Id);
@@ -123,7 +136,7 @@ public class CustomerDBUtil {
 	    	
 	    	try {
 	    		
-	    		con = DBconnect.getConnection();
+	    		con = db.getConnection();
 	    		stmt = con.createStatement();
 	    		String sql = "select * from customer where id='"+convertedID+"'";
 	    		rs = stmt.executeQuery(sql);
@@ -149,7 +162,7 @@ public class CustomerDBUtil {
 	    	return cus;	
 	    }
 	 public static boolean deleteCustomer(String username) {
-		 con = DBconnect.getConnection();
+		 con = db.getConnection();
 	        PreparedStatement stmt = null;
 
 	        try {
@@ -189,35 +202,77 @@ public class CustomerDBUtil {
 	            
 	        }
 }
-	 public static List<Customer> getCustomeraccounts() {
-			
-			ArrayList<Customer> RegisterdCustomer = new ArrayList<>();
-			
-			try {
-				
-				con = DBconnect.getConnection();
-				stmt = con.createStatement();
-				String sql = "select * from customer";
-				rs = stmt.executeQuery(sql);
-				
-				while (rs.next()) {
-					int id = rs.getInt(1);
-					String fname = rs.getString(2);
-					String lname = rs.getString(3);
-					String email = rs.getString(4);
-					String city = rs.getString(5);
-					String phone = rs.getString(6);
-					String username = rs.getString(7);
-					String password = rs.getString(8);
-					
-					Customer cus = new RegisterdCustomer(id,fname, lname , email,city, phone, username, password);
-					RegisterdCustomer.add(cus);
-				}
-				
-			} catch (Exception e) {
-				
-			}
-			
-			return RegisterdCustomer;	
-		}
+	 
+	    public static List<Customer> getCus() {
+	        ArrayList<Customer> customers = new ArrayList<>();
+
+	        try {
+	            con = db.getConnection(); // Replace db.getConnection() with your method to get the connection
+	            Statement stmt = con.createStatement();
+	            String sql = "SELECT * FROM customer";
+	            ResultSet rs = stmt.executeQuery(sql);
+
+	            while (rs.next()) {
+	                int id = rs.getInt("id");
+	                String fname = rs.getString("fname");
+	                String lname = rs.getString("lname");
+	                String email = rs.getString("email");
+	                String city = rs.getString("city");
+	                String phone = rs.getString("phone");
+	                String username = rs.getString("username");
+	                String password = rs.getString("password");
+
+	                Customer customer = new Customer(id, fname, lname, email, city, phone, username, password);
+	               
+
+	                customers.add(customer);
+	            }
+
+	            rs.close();
+	            stmt.close();
+	        } catch (SQLException e) {
+	            e.printStackTrace();
+	            // Handle the exception according to your application's requirements
+	        } 
+
+	        return customers;
+	    }
+	    
+	    public static boolean updatetable(String fname, String lname, String email, String phone, String city, String username) {
+	        try {
+	            con = db.getConnection();
+	            if (con == null) {
+	                System.out.println("Failed to establish database connection.");
+	                return false;
+	            }
+
+	            String sql = "UPDATE customer SET fname=?, lname=?, email=?, phone=?, city=? WHERE username=?";
+	            System.out.println("SQL Query: " + sql); // Print SQL Query for debugging
+	            
+	            PreparedStatement pstmt = con.prepareStatement(sql);
+	            pstmt.setString(1, fname);
+	            pstmt.setString(2, lname);
+	            pstmt.setString(3, email);
+	            pstmt.setString(4, phone);
+	            pstmt.setString(5, city);
+	            pstmt.setString(6, username);
+
+	            int rowsUpdated = pstmt.executeUpdate();
+	            return rowsUpdated > 0;
+	        } catch (SQLException e) {
+	            e.printStackTrace();
+	            return false;
+	        } finally {
+	            // Close resources in finally block
+	            try {
+	                if (con != null) {
+	                    con.close();
+	                }
+	            } catch (SQLException e) {
+	                e.printStackTrace();
+	            }
+	        }
+	    }
+
+	    
 }

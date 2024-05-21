@@ -7,9 +7,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login Form</title>
     <link rel="stylesheet" href = "css/template.css">
-    <link rel="stylesheet" href = "css/Log.css">
+    <link rel="stylesheet" href = "css/log.css">
    
-   
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Round|Material+Icons+Sharp|Material+Icons+Two+Tone"
+      rel="stylesheet"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700;800&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"/>
   </head>
   <body>
     <header class="header">

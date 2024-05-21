@@ -35,12 +35,15 @@
 	<c:forEach var="cus" items="${cusDetails}">
 	
 	<c:set var="id" value="${cus.id}"/>
+	<c:set var="fname" value="${cus.fname}"/>
+	<c:set var="lname" value="${cus.lname}"/>
 	<c:set var="email" value="${cus.email}"/>
 	<c:set var="phone" value="${cus.phone}"/>
-	<c:set var="username" value="${cus.username}"/>
 	<c:set var="city" value="${cus.city}"/>
-	<c:set var="lname" value="${cus.lname}"/>
-	<c:set var="fname" value="${cus.fname}"/>
+	<c:set var="username" value="${cus.username}"/>
+	
+	
+	
 	
 	 <tr>
             <td>Customer ID</td>
@@ -75,11 +78,12 @@
 	
 	<c:url value="updatecustomer.jsp" var="cusupdate">
 		<c:param name="id" value="${id}"/>
-		<c:param name="email" value="${email}"/>
-		<c:param name="phone" value="${phone}"/>
 		<c:param name="fname" value="${fname}"/>
 		<c:param name="lname" value="${lname}"/>
-		<c:param name="username" value="${username}"/>
+		<c:param name="email" value="${email}"/>
+		<c:param name="phone" value="${phone}"/>
+		<c:param name="city" value="${city}"/>
+	    <c:param name="username" value="${username}"/>
 	</c:url>
 	
 <!-- Buttons wrapped in a container -->
@@ -91,7 +95,10 @@
     <input type="hidden" name="username" value="${cus.username}" />
         <button type="submit" name= "submit">Delete My Account</button>
     </form>
+    
+    
 </div></div>
+
 
 	
 
