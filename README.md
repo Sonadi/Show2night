@@ -83,17 +83,18 @@
    - Then deploy again on Tomcat.
 
 ---
-
 ## Contributors
 
 The following individuals have made significant contributions to the development of **Show2Night**:
 
-| Contributor | GitHub Profile | Roles |
-|-------------|----------------|-------|
-| **Vidura**  | [vidura-12](https://github.com/vidura-12) | Project Owner, Lead Developer |
-| **Sonadi** | [Sonadi](https://github.com/Sonadi) | QA Engineer, Testing and Bug Fixing |
+| Contributor          | GitHub Profile                                        | Roles                           |
+|----------------------|-------------------------------------------------------|----------------------------------|
+| **Vidura**           | [vidura-12](https://github.com/vidura-12)             | Project Owner, Lead Developer    |
+| **Sonadi**           | [Sonadi](https://github.com/Sonadi)                   | QA Engineer, Testing and Bug Fixing |
+| **Sajani Sanchala**  | [sajanisanchala](https://github.com/sajanisanchala)   | Frontend Developer               |
+| **Viraj Pasindu**     | [VirajPasindu](https://github.com/VirajPasindu)       | Backend Developer                |
 
-Thank you to both contributors for their hard work and commitment to building and improving this platform.
+Thank you to all contributors for their hard work and commitment to building and improving this platform.
 
 ---
 
